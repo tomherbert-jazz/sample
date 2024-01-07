@@ -19,8 +19,7 @@ tickerDf = tickerData.history(period='1d', start='2010-05-31', end='2024-01-31')
 # Display the DataFrame
 st.write(tickerDf)
 
-# Convert the datetime index to UTC time zone using tz_convert
-tickerDf.index = tickerDf.index.tz_convert('UTC')
+
 
 # Open	High	Low	Close	Volume	Dividends	Stock Splits
 
