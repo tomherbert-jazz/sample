@@ -1,6 +1,6 @@
 import yfinance as yf
 import streamlit as st
-import pandas
+import pandas as pd
 
 st.write("""
 # Simple Stock Price App
@@ -16,8 +16,11 @@ tickerSymbol = 'META'
 tickerData = yf.Ticker(tickerSymbol)
 #get the historical prices for this ticker
 tickerDf = tickerData.history(period='1d', start='2010-05-31', end='2024-01-31')
-# Convert the index to UTC time zone
-tickerDf.index = tickerDf.index.tz_convert("UTC")
+# Display the DataFrame
+st.write(tickerDf)
+
+# Convert the datetime index to UTC time zone using tz_convert
+tickerDf.index = tickerDf.index.tz_convert('UTC')
 
 # Open	High	Low	Close	Volume	Dividends	Stock Splits
 
