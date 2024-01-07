@@ -15,7 +15,7 @@ tickerSymbol = 'META'
 #get data on this ticker
 tickerData = yf.Ticker(tickerSymbol)
 #get the historical prices for this ticker
-tickerDf = tickerData.history(period='1d', start='2010-5-31', end='2024-1-31',tz='UTC')
+tickerDf = tickerData.history(period='1d', start='2010-05-31', end='2024-01-31',tz='UTC')
 # Open	High	Low	Close	Volume	Dividends	Stock Splits
 
 st.line_chart(tickerDf.Close)
