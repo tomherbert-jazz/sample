@@ -15,9 +15,14 @@ tickerSymbol = 'META'
 #get data on this ticker
 tickerData = yf.Ticker(tickerSymbol)
 #get the historical prices for this ticker
-tickerDf = tickerData.history(period='1d', start='2012-5-18', end='2024-1-05')
+tickerDf = tickerData.history(period='1d', start='2012-05-18', end='2024-01-05')
+
 # Display the DataFrame
 st.write(tickerDf)
+
+# Convert the datetime index to UTC time zone using tz_convert
+tickerDf.index = tickerDf.index.tz_convert('UTC')
+
 
 
 
