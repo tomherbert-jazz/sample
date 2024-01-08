@@ -79,14 +79,19 @@ def price_plot(symbol):
   df['Date'] = df.index
 
   fig, ax = plt.subplots()
-  ax.fill_between(df.Date, df.Close, color='skyblue', alpha=0.3)
-  ax.plot(df.Date, df.Close, color='skyblue', alpha=0.8)
-  plt.xticks(rotation=90)
+  bars = ax.bar(df.Date, df.Close, color='skyblue', alpha=0.8, align='edge')
+  plt.xticks(rotation=45)
   plt.title(symbol, fontweight='bold')
   plt.xlabel('Date', fontweight='bold')
   plt.ylabel('Closing Price', fontweight='bold')
 
+  # Add values to the bars
+  for bar in bars:
+    yval = bar.get_height()
+    ax.text(bar.get_x() + bar.get_width()/2.0, yval, round(yval, 2), va='bottom') # va: vertical alignment
+
   return st.pyplot(fig)
+
 
 num_company = st.sidebar.slider('Number of Companies', 1, 5)
 
